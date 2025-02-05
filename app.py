@@ -23,18 +23,25 @@ def fontRegistered():
         fm.fontManager.addfont(font_file)
     fm._load_fontmanager(try_read_cache=False)
 
-plt.rcParams['axes.unicode_minus'] = False
-system_os = platform.system()
-if system_os == "Darwin":  # macOS
-    font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"
-elif system_os == "Windows":  # Windows
-    font_path = "C:/Windows/Fonts/malgun.ttf"
-else:  # Linux
-    rc('font', family='NanumGothic')
+# 한글 폰트 설정
+def set_korean_font():
+    plt.rcParams['axes.unicode_minus'] = False
+    system_os = platform.system()
+
+    if system_os == "Darwin":  # macOS
+        plt.rcParams['font.family'] = "AppleGothic"
+    elif system_os == "Windows":  # Windows
+        plt.rcParams['font.family'] = "Malgun Gothic"
+    else:  # Linux (Google Colab, Ubuntu 등)
+        nanum_font_path = "/usr/share/fonts/truetype/nanum/NanumGothic.ttf"
+        if os.path.exists(nanum_font_path):  # 시스템에 폰트가 있으면 적용
+            plt.rcParams['font.family'] = "NanumGothic"
+        else:
+            st.warning("한글 폰트가 없습니다. NanumGothic을 설치해주세요.")
 
 def main():
     fontRegistered()
-    plt.rc('font', family='NanumGothic')
+    set_korean_font()
 
     # 메인 타이틀 꾸미기
     st.markdown(
