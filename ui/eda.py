@@ -7,30 +7,26 @@ import platform
 import os
 from matplotlib import rc
 
+@st.cache_data
 def fontRegistered():
-    # 현재 작업 디렉토리에서 custom_fonts 폴더를 찾고, 그 안의 폰트 파일을 로드
     font_dirs = [os.getcwd() + '/custom_fonts']
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
-    
     for font_file in font_files:
         fm.fontManager.addfont(font_file)
     fm._load_fontmanager(try_read_cache=False)
 
-# 한글 폰트 설정
-def set_korean_font():
-    system_os = platform.system()
-    if system_os == "Darwin":  # macOS
-        plt.rcParams['font.family'] = "AppleGothic"
-    elif system_os == "Windows":  # Windows
-        plt.rcParams['font.family'] = "Malgun Gothic"
-    else:  # Linux
-        plt.rcParams['font.family'] = "NanumGothic"
-    
-    plt.rcParams['axes.unicode_minus'] = False
+plt.rcParams['axes.unicode_minus'] = False
+system_os = platform.system()
+if system_os == "Darwin":  # macOS
+    font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"
+elif system_os == "Windows":  # Windows
+    font_path = "C:/Windows/Fonts/malgun.ttf"
+else:  # Linux
+    rc('font', family='NanumGothic')
 
 def run_eda():
     fontRegistered()
-    set_korean_font()
+    plt.rc('font', family='NanumGothic')
 
     # 제목 정리
     st.markdown(
@@ -98,9 +94,9 @@ def run_eda():
     df_yearly = df.groupby("year")["worldwide_gross"].mean()
     fig1 = plt.figure()
     df_yearly.plot(kind="bar", figsize=(10, 5), color="skyblue")
-    plt.ylabel("평균 수익 ($)")
-    plt.xlabel("연도")
-    plt.title("연도별 평균 수익")
+    plt.ylabel("Average Gross ($)")
+    plt.xlabel("Year")
+    plt.title("Yearly Average Gross")
     st.pyplot(fig1)
 
     st.markdown("---")
@@ -110,9 +106,9 @@ def run_eda():
     df_genre = df.groupby("genre")["worldwide_gross"].mean().sort_values()
     fig2 = plt.figure()
     df_genre.plot(kind="barh", figsize=(10, 5), color="lightcoral")
-    plt.xlabel("평균 수익 ($)")
-    plt.ylabel("장르")
-    plt.title("장르별 평균 수익")
+    plt.xlabel("Average Gross ($)")
+    plt.ylabel("Genre")
+    plt.title("Average Gross by Genre")
     st.pyplot(fig2)
 
     st.markdown("---")
@@ -122,10 +118,10 @@ def run_eda():
     df_mpaa = df.groupby("mpaa")["worldwide_gross"].mean().sort_values()
     fig3 = plt.figure()
     df_mpaa.plot(kind="bar", figsize=(8, 5), color="lightgreen")
-    plt.ylabel("평균 수익 ($)")
-    plt.xlabel("MPAA 등급")
+    plt.ylabel("Average Gross ($)")
+    plt.xlabel("MPAA Rating")
     plt.xticks(rotation = 0)
-    plt.title("MPAA 등급별 평균 수익")
+    plt.title("Average Gross by MPAA Rating")
     st.pyplot(fig3)
 
     st.markdown("---")
@@ -134,9 +130,9 @@ def run_eda():
     st.info("🏛 **상영관 수 vs 개봉 주 수익 관계 분석**")
     fig4 = plt.figure(figsize=(8, 6))
     sb.regplot(x=df["theaters"], y=df["opening_weekend"], scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
-    plt.xlabel("상영관 수")
-    plt.ylabel("개봉 주 수익 ($)")
-    plt.title("상영관 수와 개봉 주 수익 관계")
+    plt.xlabel("Number of Theaters")
+    plt.ylabel("Opening Weekend Gross ($)")
+    plt.title("Relationship between Theaters and Opening Weekend Gross")
     st.pyplot(fig4)
 
     st.markdown("---")

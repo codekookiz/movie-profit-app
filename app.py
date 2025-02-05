@@ -15,31 +15,7 @@ from ui.eda import run_eda
 from ui.home import run_home
 from ui.ml import run_ml
 
-def fontRegistered():
-    # 현재 작업 디렉토리에서 custom_fonts 폴더를 찾고, 그 안의 폰트 파일을 로드
-    font_dirs = [os.getcwd() + '/custom_fonts']
-    font_files = fm.findSystemFonts(fontpaths=font_dirs)
-    
-    for font_file in font_files:
-        fm.fontManager.addfont(font_file)
-    fm._load_fontmanager(try_read_cache=False)
-
-# 한글 폰트 설정
-def set_korean_font():
-    system_os = platform.system()
-    if system_os == "Darwin":  # macOS
-        plt.rcParams['font.family'] = "AppleGothic"
-    elif system_os == "Windows":  # Windows
-        plt.rcParams['font.family'] = "Malgun Gothic"
-    else:  # Linux
-        plt.rcParams['font.family'] = "NanumGothic"
-    
-    plt.rcParams['axes.unicode_minus'] = False
-
 def main():
-    fontRegistered()
-    set_korean_font()
-
     # 메인 타이틀 꾸미기
     st.markdown(
         """
