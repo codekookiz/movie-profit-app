@@ -20,7 +20,7 @@ system_os = platform.system()
 if system_os == "Darwin":  # macOS
     font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"
 elif system_os == "Windows":  # Windows
-    font_path = "C:/Windows/Fonts/malgun.ttf"
+    plt.rcParams['font.family'] = 'Malgun Gothic'
 else:  # Linux
     rc('font', family='NanumGothic')
 
