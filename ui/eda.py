@@ -2,9 +2,32 @@ import streamlit as st
 import pandas as pd
 import seaborn as sb
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import platform
+import os
+from matplotlib import rc
 
+@st.cache_data
+def fontRegistered():
+    font_dirs = [os.getcwd() + '/custom_fonts']
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+
+plt.rcParams['axes.unicode_minus'] = False
+system_os = platform.system()
+if system_os == "Darwin":  # macOS
+    font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"
+elif system_os == "Windows":  # Windows
+    font_path = "C:/Windows/Fonts/malgun.ttf"
+else:  # Linux
+    rc('font', family='NanumGothic')
 
 def run_eda():
+    fontRegistered()
+    plt.rc('font', family='NanumGothic')
+
     # 제목 정리
     st.markdown(
         """
