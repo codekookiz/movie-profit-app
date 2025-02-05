@@ -73,7 +73,7 @@ def run_ml() :
         else :
             label_group = '블록버스터'
 
-        st.subheader(f'영화 \'{title}\'은(는) {label_group} 유형 영화군요!')
+        st.subheader(f'영화 \'{title}\'은(는) {label_group} 영화군요!')
         st.text('')
 
         # 아래 글 표시하고 대기, 이후 결과 도출
