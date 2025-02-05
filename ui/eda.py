@@ -129,7 +129,7 @@ def run_eda():
     # 상영관 수 vs 개봉 주 수익 관계
     st.info("🏛 **상영관 수 vs 개봉 주 수익 관계 분석**")
     fig4 = plt.figure(figsize=(8, 6))
-    sb.regplot(x=df["theaters"], y=df["opening_weekend"], scatter_kws={'alpha':0.5}, line_kws={'color':'red'})
+    sb.scatterplot(x=df["theaters"], y=df["opening_weekend"], alpha=0.5, color='purple')
     plt.xlabel("상영관 수")
     plt.ylabel("개봉 주 수익 ($)")
     plt.title("상영관 수와 개봉 주 수익 관계")
