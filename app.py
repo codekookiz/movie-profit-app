@@ -17,7 +17,7 @@ from ui.ml import run_ml
 
 @st.cache_data
 def fontRegistered():
-    font_dirs = [os.getcwd() + '../custom_fonts']
+    font_dirs = [os.getcwd() + '/ui']
     font_files = fm.findSystemFonts(fontpaths=font_dirs)
     for font_file in font_files:
         fm.fontManager.addfont(font_file)
@@ -35,7 +35,7 @@ else:  # Linux
 def main():
     fontRegistered()
     plt.rc('font', family='NanumGothic')
-    
+
     # 메인 타이틀 꾸미기
     st.markdown(
         """
