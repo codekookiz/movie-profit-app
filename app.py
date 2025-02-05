@@ -15,8 +15,27 @@ from ui.eda import run_eda
 from ui.home import run_home
 from ui.ml import run_ml
 
+@st.cache_data
+def fontRegistered():
+    font_dirs = [os.getcwd() + '../custom_fonts']
+    font_files = fm.findSystemFonts(fontpaths=font_dirs)
+    for font_file in font_files:
+        fm.fontManager.addfont(font_file)
+    fm._load_fontmanager(try_read_cache=False)
+
+plt.rcParams['axes.unicode_minus'] = False
+system_os = platform.system()
+if system_os == "Darwin":  # macOS
+    font_path = "/System/Library/Fonts/Supplemental/AppleGothic.ttf"
+elif system_os == "Windows":  # Windows
+    font_path = "C:/Windows/Fonts/malgun.ttf"
+else:  # Linux
+    rc('font', family='NanumGothic')
 
 def main():
+    fontRegistered()
+    plt.rc('font', family='NanumGothic')
+    
     # 메인 타이틀 꾸미기
     st.markdown(
         """
