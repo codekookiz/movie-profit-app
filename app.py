@@ -10,6 +10,7 @@ from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.cluster import KMeans
 from matplotlib import rc
+from datetime import datetime
 
 from ui.eda import run_eda
 from ui.home import run_home
@@ -32,24 +33,55 @@ def main():
                  unsafe_allow_html=True)
     
     # 사이드바 스타일 개선
-    st.sidebar.image("image/main_sidebar.png", use_container_width=True)  # 로고 추가 가능
-    st.sidebar.markdown("## 🔹 찾아보기")
+    st.sidebar.image("image/main_sidebar.png", use_container_width=True)  
     
-    menu = ['🏠 홈', '📊 과거 데이터 확인하기', '🎬 영화 수익 예측하기', 'ℹ 앱 정보',  '⚒️ 통계 데이터']
-    choice = st.sidebar.radio("**메뉴 선택**", menu)
-    
+    # 📅 현재 날짜 & 시간 표시
+    now = datetime.now().strftime("%Y-%m-%d %a %H:%M %p")
+    st.sidebar.markdown(f"🕒 **현재 시간:** {now}")
+
     st.sidebar.markdown("---")
-    st.sidebar.markdown("📌 Created by CodeKookiz (https://codekookiz.imweb.me)")
-    
-    if choice == menu[0]:
+
+    # 🎬 영화 데이터 요약 (예시 데이터)
+    st.sidebar.markdown("### 📊 데이터 요약")
+    col1, col2 = st.sidebar.columns(2)
+    col1.metric("📈 총 영화 데이터", "1,235개")
+    col2.metric("💰 평균 제작비", "$50M")
+
+    col3, col4 = st.sidebar.columns(2)
+    col3.metric("🎟 평균 수익", "$120M")
+    col4.metric("⭐️ 최고 흥행작", "Avatar 2")
+
+    st.sidebar.markdown("---")
+
+    # 📌 소셜 & 도움말 버튼 추가
+    st.sidebar.markdown("### 🔗 유용한 링크")
+    st.sidebar.link_button("🔍 GitHub Repository", "https://github.com/codekookiz/movie-profit-app")
+
+    if st.sidebar.button("❓ 도움말 보기"):
+        st.sidebar.info("이 앱은 영화 데이터를 분석하고 수익을 예측하는 머신러닝 기반 앱입니다.")
+
+    st.sidebar.markdown("---")
+
+    # 📌 크레딧
+    st.sidebar.markdown("📌 Created by **CodeKookiz**  \n[🌍 Website](https://codekookiz.imweb.me)")
+
+    # 탭 메뉴 생성
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏠 홈", "📊 과거 데이터 확인하기", "🎬 영화 수익 예측하기", "ℹ 앱 정보", "⚒️ 통계 데이터"])
+
+    # 각 탭에 해당하는 기능 실행
+    with tab1:
         run_home()
-    elif choice == menu[1]:
+
+    with tab2:
         run_eda()
-    elif choice == menu[2]:
+
+    with tab3:
         run_ml()
-    elif choice == menu[3]:
+
+    with tab4:
         run_info()
-    elif choice == menu[4]:
+
+    with tab5:
         run_stat()
 
 if __name__ == '__main__':
