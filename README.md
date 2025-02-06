@@ -51,23 +51,28 @@
 
 ```
 📁 movie-profit-app/
-│── 📄 app.py                # 애플리케이션 메인 파일 (Streamlit)
-|── 📂 assets
-│   │── movie_profit_model.pkl # 예측 모델 파일
-|── 📂 data
-│   │── movie_profit_model.pkl # 예측 모델 파일
-│   │── movie_profit_model.pkl # 예측 모델 파일
-│   │── movie_profit_model.pkl # 예측 모델 파일
-|── 📂 image
-│── 📂 model/                # 학습된 모델 및 데이터 파일
-│   │── movie_profit_model.pkl # 예측 모델 파일
-|── 📂 ui
-│── 📄 classify_movie.ipynb              # 사용자 데이터 저장 파일
-│── 📄 cluster_movie.ipynb      # 필요한 라이브러리 목록
-│── 📄 predict_movie.ipynb      # 필요한 라이브러리 목록
-│── 📄 ratio_movie.ipynb      # 필요한 라이브러리 목록
-│── 📄 result_movie.ipynb      # 필요한 라이브러리 목록
-│── 📄 README.md             # 애플리케이션 설명 파일
+│── 📄 app.py                      # 애플리케이션 메인 파일 (Streamlit)
+|── 📂 data/
+│   │── 📄 new_movie.csv           # 클러스터링 이후 데이터
+│   │── 📄 result.csv              # 예측 결과 데이터
+│   │── 📄 top-500-movies.csv      # 원본 데이터
+|── 📂 image/
+│   │── 📄 main_home.png           # 홈 화면 메인 이미지
+│   │── 📄 main_sidebar.png        # 사이드바 메인 이미지
+│── 📂 model/
+│   │── 📄 classifier.pkl          # 분류 모델
+│   │── 📄 regressor.pkl           # 예측 모델
+|── 📂 ui/
+│   │── 📄 eda.py                  # 탐색적 데이터 분석 (EDA) 탭
+│   │── 📄 home.py                 # 홈 화면 탭
+│   │── 📄 info.py                 # 정보 탭
+│   │── 📄 ml.py                   # 머신 러닝 (ML) 탭
+│── 📄 classify_movie.ipynb        # 신규 데이터 분류 모델 파일 생성한 주피터 노트북
+│── 📄 cluster_movie.ipynb         # 기존 데이터 분류한 csv 파일 생성한 주피터 노트북
+│── 📄 predict_movie.ipynb         # 신규 데이터 예측 모델 생성한 주피터 노트북
+│── 📄 ratio_movie.ipynb           # 수익 비율 계산한 주피터 노트북
+│── 📄 result_movie.ipynb          # 예측 결과 저장하는 csv 파일 생성한 주피터 노트북
+│── 📄 README.md                   # 애플리케이션 설명 파일
 ```
 
 ---
