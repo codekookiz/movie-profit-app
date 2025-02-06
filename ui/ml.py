@@ -22,7 +22,7 @@ def run_ml():
     st.markdown(
         """
         <h2 style="text-align: center; color: #FF4B4B;">
-            🎬 영화 수익 예측하기
+            🍿 영화 수익 예측하기
         </h2>
         <p style="font-size: 24px; text-align: center; color: ##4C82C2;">
             <b>머신 러닝 (ML)<b>
@@ -33,10 +33,16 @@ def run_ml():
 
     st.markdown("---")
 
-    st.markdown('<p class="big-font">🎬 ML 기반 영화 박스오피스 예측</p>', unsafe_allow_html=True)
-    st.markdown('<p class="info-box">영화의 기본 정보를 입력하면 예상 박스오피스 수익을 예측해드립니다.</p>', unsafe_allow_html=True)
-    
-    st.markdown('<p class="sub-header">📌 영화 정보 입력</p>', unsafe_allow_html=True)
+    # 큰 제목
+    st.markdown('<p style="font-size: 24px; font-weight: bold; color: #333; font-family: Arial, sans-serif;">🎞️ ML 기반 영화 박스오피스 예측</p>', unsafe_allow_html=True)
+
+    # 정보 박스 스타일
+    st.markdown('<p style="font-size: 16px; color: #555; font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 15px; border-radius: 8px; box-shadow: 0px 2px 10px rgba(0,0,0,0.1);">영화의 기본 정보를 입력하면 예상 박스오피스 수익을 예측해드립니다.</p>', unsafe_allow_html=True)
+    st.text('')
+
+    # 하위 제목
+    st.markdown('<p style="font-size: 22px; font-weight: bold; color: #333; font-family: Arial, sans-serif; border-bottom: 3px solid #4CAF50; padding-bottom: 10px;">📌 영화 정보 입력</p>', unsafe_allow_html=True)
+    st.text('')
 
     menu_rating = ['전체 관람가', '12세 이상 관람가', '15세 이상 관람가', '청소년 관람 불가']
     menu_genre = ['액션', '어드벤처', '블랙 코미디', '코미디', '드라마', '호러', '뮤지컬', '로맨틱 코미디', '스릴러/서스펜스', '서부극']
@@ -64,6 +70,8 @@ def run_ml():
 
     data_classify = np.array([cost, mpaa_dict[mpaa], genre_dict[genre], runtime, year]).reshape(1, 5)
     new_data_classify = pd.DataFrame(data_classify)
+
+    st.text('')
 
     if st.button('📊 수익 예측', disabled=not title):
         st.markdown('<p class="sub-header">🔍 예측 결과</p>', unsafe_allow_html=True)

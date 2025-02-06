@@ -30,8 +30,9 @@ def run_home():
     # EDA 및 ML 설명
     st.markdown(
         """
-        ✅ **EDA 탭**: 과거 영화 데이터를 분석  
-        ✅ **ML 탭**: 신규 영화 데이터의 예상 수익 예측
+        ✅ **과거 데이터 확인하기**: 기존 영화 데이터 분석  
+        ✅ **영화 수익 예측하기**: 신규 영화 데이터의 예상 수익 예측  
+        ✅ **앱 정보 및 통계**: 앱 기초 정보 및 통계 데이터 제공
         """, 
         unsafe_allow_html=True
     )
@@ -42,7 +43,3 @@ def run_home():
     st.image("image/image.png", use_container_width=True)
 
     st.markdown("---")
-
-    st.text('')
-    if st.button('개발 정보 확인하기') :
-        pass
