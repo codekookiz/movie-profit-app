@@ -31,7 +31,7 @@ def main():
                  unsafe_allow_html=True)
     
     # 사이드바 스타일 개선
-    st.sidebar.image("assets/M.png", use_container_width=True)  # 로고 추가 가능
+    st.sidebar.image("image/main_sidebar.png", use_container_width=True)  # 로고 추가 가능
     st.sidebar.markdown("## 🔹 찾아보기")
     
     menu = ['🏠 홈', '📊 과거 데이터 확인하기', '🎬 영화 수익 예측하기', '⚒️ 앱 정보 및 통계']
