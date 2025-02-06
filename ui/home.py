@@ -39,6 +39,7 @@ def run_home():
 
     st.markdown("---")
 
+
     # 이미지 추가 (가운데 정렬)
     st.image("image/main_home.png", use_container_width=True)
 
