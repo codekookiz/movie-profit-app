@@ -17,7 +17,7 @@ def run_info():
 
     st.markdown("---")
 
-    
+
 
 
 
@@ -32,7 +32,7 @@ def run_info():
 
     # 비밀번호 입력 UI
     if not st.session_state.authenticated:
-        password = st.text_input("비밀번호를 입력하세요:", type="password")
+        password = st.text_input("통계 확인을 위해 비밀번호를 입력하세요:", type="password")
         if st.button("로그인"):
             if password == CORRECT_PASSWORD:
                 st.session_state.authenticated = True
