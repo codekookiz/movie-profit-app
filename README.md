@@ -93,7 +93,7 @@
 
 3. **영화 수익 예측**
    - LinearRegression을 포함한 3가지 모델 성능 비교 (LinearRegression, RandomForestRegressor, XGBRegressor).
-   - 최종적으로 LinearRegression 모델을 선택 (정확도 71.45%).
+   - 최종적으로 LinearRegression 모델을 선택 (정확도 73%).
 
 4. **전 세계 수익 예측**
    - 북미 수익 대비 전 세계 수익의 일반적인 비율 분석.

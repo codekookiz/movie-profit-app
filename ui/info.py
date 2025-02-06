@@ -114,7 +114,7 @@ def run_info():
         <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
             <b>3️⃣ 북미 수익 예측 및 전 세계 수익 예측</b><br>
             𝟙. 영화의 다양한 특성(제작비용, 개봉 수익 등)을 기반으로 LinearRegression, RandomForestRegressor, XGBRegressor 모델을 사용하여 북미 시장의 박스오피스 수익을 예측하였습니다.<br>
-            𝟚. 학습과 테스트 결과, LinearRegression 모델이 71.45%라는 가장 높은 예측 정확도를 보였고, 따라서 이를 최종 모델로 선택했습니다.<br>
+            𝟚. 학습과 테스트 결과, LinearRegression 모델이 73%라는 가장 높은 예측 정확도를 보였고, 따라서 이를 최종 모델로 선택했습니다.<br>
             𝟛. 북미 박스오피스 수익을 바탕으로 전 세계 수익을 예측하기 위해 수익 비율을 계산하고, 해당 비율을 기반으로 예측값을 제공할 수 있게 되었습니다.<br>&nbsp;&nbsp;&nbsp;
             <i>- 세계 성적/북미 성적 비율의 최소치가 1.1이고, 평균치가 3.5인데 반해 최댓값이 315.4에 달할 정도로 과도하게 높았습니다.<br>&nbsp;&nbsp;&nbsp;
             - 따라서, 해당 비율의 mean()값 대신 median()값을 '수익 비율'로 설정하여 예측값 제공을 위해 사용하기로 결정했습니다.</i>

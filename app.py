@@ -48,12 +48,12 @@ def main():
     # 🎬 영화 데이터 요약 (예시 데이터)
     st.sidebar.markdown("### 📊 데이터 요약")
     col1, col2 = st.sidebar.columns(2)
-    col1.metric("📈 총 영화 데이터", "1,235개")
-    col2.metric("💰 평균 제작비", "$50M")
+    col1.metric("📈 총 분석 영화 데이터", "491개")
+    col2.metric("💰 평균 제작비", "$149M")
 
     col3, col4 = st.sidebar.columns(2)
-    col3.metric("🎟 평균 수익", "$120M")
-    col4.metric("⭐️ 최고 흥행작", "Avatar 2")
+    col3.metric("🎟 평균 수익", "$478M")
+    col4.metric("⭐️ 최고 흥행작", "Avatar")
 
     st.sidebar.markdown("---")
 
