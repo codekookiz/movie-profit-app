@@ -187,7 +187,7 @@ def run_info():
         st.markdown(
             """
             <p style="font-size: 24px; text-align: center;">
-                <b>사용자의 영화 예측 기록을 표시합니다.<b>
+                <b>누적된 영화 예측 데이터 통계를 표시합니다.<b>
             </p>
             """, 
             unsafe_allow_html=True
