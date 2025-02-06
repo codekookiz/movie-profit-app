@@ -15,6 +15,7 @@ from ui.eda import run_eda
 from ui.home import run_home
 from ui.info import run_info
 from ui.ml import run_ml
+from ui.stat import run_stat
 
 
 def main():
@@ -34,7 +35,7 @@ def main():
     st.sidebar.image("image/main_sidebar.png", use_container_width=True)  # 로고 추가 가능
     st.sidebar.markdown("## 🔹 찾아보기")
     
-    menu = ['🏠 홈', '📊 과거 데이터 확인하기', '🎬 영화 수익 예측하기', '⚒️ 앱 정보 및 통계']
+    menu = ['🏠 홈', '📊 과거 데이터 확인하기', '🎬 영화 수익 예측하기', 'ℹ 앱 정보',  '⚒️ 통계 데이터']
     choice = st.sidebar.radio("**메뉴 선택**", menu)
     
     st.sidebar.markdown("---")
@@ -48,6 +49,8 @@ def main():
         run_ml()
     elif choice == menu[3]:
         run_info()
+    elif choice == menu[4]:
+        run_stat()
 
 if __name__ == '__main__':
     main()
