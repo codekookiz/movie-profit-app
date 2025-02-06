@@ -18,7 +18,7 @@ def run_home():
     st.markdown(
         """
         <p style="font-size: 18px; text-align: center;">
-            과거 데이터를 분석하여 영화의 예상 수익을 예측하는 프로젝트입니다.
+            과거 데이터를 분석하여 영화의 예상 수익을 예측하는 앱입니다.
         </p>
         """, 
         unsafe_allow_html=True
@@ -39,4 +39,10 @@ def run_home():
     st.markdown("---")
 
     # 이미지 추가 (가운데 정렬)
-    st.image("image/deadpool.jpg", use_container_width=True)
+    st.image("image/image.png", use_container_width=True)
+
+    st.markdown("---")
+
+    st.text('')
+    if st.button('개발 정보 확인하기') :
+        pass

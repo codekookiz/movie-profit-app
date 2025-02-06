@@ -32,8 +32,11 @@ def run_eda():
     st.markdown(
         """
         <h2 style="text-align: center; color: #FF4B4B;">
-            📊 탐색적 데이터 분석 (EDA)
+            📊 과거 데이터 확인하기
         </h2>
+        <p style="font-size: 24px; text-align: center; color: ##4C82C2;">
+            <b>탐색적 데이터 분석 (EDA)<b>
+        </p>
         """,
         unsafe_allow_html=True
     )

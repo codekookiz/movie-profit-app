@@ -18,6 +18,21 @@ st.markdown(
 )
 
 def run_ml():
+    # 제목 정리
+    st.markdown(
+        """
+        <h2 style="text-align: center; color: #FF4B4B;">
+            🎬 영화 수익 예측하기
+        </h2>
+        <p style="font-size: 24px; text-align: center; color: ##4C82C2;">
+            <b>머신 러닝 (ML)<b>
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown("---")
+
     st.markdown('<p class="big-font">🎬 ML 기반 영화 박스오피스 예측</p>', unsafe_allow_html=True)
     st.markdown('<p class="info-box">영화의 기본 정보를 입력하면 예상 박스오피스 수익을 예측해드립니다.</p>', unsafe_allow_html=True)
     
@@ -67,8 +82,8 @@ def run_ml():
             pred_dom_profit = int(pred_profit.round())
 
             if pred_dom_profit >= 0:
-                pred_dom_profit = format(pred_dom_profit, ',')
-                st.subheader(f'📈 예상 북미 박스오피스 수익: **{pred_dom_profit} 달러**')
+                new_dom_profit = format(pred_dom_profit, ',')
+                st.subheader(f'📈 예상 북미 박스오피스 수익: **{new_dom_profit} 달러**')
 
                 time.sleep(1)
 
@@ -76,7 +91,17 @@ def run_ml():
                 # max값이 과도하게 큰 관계로 mean값 대신 median값을 wrld_dom_ratio로 설정 (세부 사항은 ratio_movie.ipynb 참고)
                 wrld_dom_ratio = 2.7
                 pred_wrld_profit = int((pred_profit * wrld_dom_ratio).round())
-                pred_wrld_profit = format(pred_wrld_profit, ',')
-                st.subheader(f'🌍 예상 전세계 박스오피스 수익: **{pred_wrld_profit} 달러**')
+                new_wrld_profit = format(pred_wrld_profit, ',')
+                st.subheader(f'🌍 예상 전세계 박스오피스 수익: **{new_wrld_profit} 달러**')
+
+                save_df = pd.read_csv('data/result.csv')
+                new_row = pd.DataFrame([{"영화명":title, "개봉 연도":int(year), "상영 시간":int(runtime), "상영 등급":mpaa, "장르":genre,
+                                         "제작 비용 ($)":int(cost), "개봉 주 수익 ($)":int(opening), "유형":label_group, "북미 예상 수익 ($)":int(pred_dom_profit),
+                                         "전세계 예상 수익 ($)":int(pred_wrld_profit)}])
+                print(new_row)
+
+                save_df = pd.concat([save_df, new_row], ignore_index=True)
+                save_df.to_csv('data/result.csv', index=False)
+
             else:
                 st.error('❌ 예측이 불가능한 데이터입니다.')
