@@ -60,22 +60,6 @@ def run_eda():
 
     st.markdown("---")
 
-    # 상관 관계 분석
-    st.info("🔍 **상관 관계 분석**")
-    df_corr = df.corr(numeric_only=True)
-
-    # 선택 메뉴
-    choice = st.radio("📊 표시 방식을 선택하세요.", ["차트로 보기", "수치로 보기"], horizontal=True)
-
-    if choice == "차트로 보기":
-        fig1 = plt.figure(figsize=(10, 6))
-        sb.heatmap(data=df_corr, annot=True, vmin=-1, vmax=1, cmap="coolwarm", linewidths=0.5)
-        st.pyplot(fig1)
-    else:
-        st.dataframe(df_corr)
-
-    st.markdown("---")
-
     # 최대/최소 데이터 확인
     st.info("📌 **최대/최소 데이터 확인하기**")
 
