@@ -10,7 +10,7 @@ from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
 from sklearn.compose import ColumnTransformer
 from sklearn.cluster import KMeans
 from matplotlib import rc
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
 from ui.eda import run_eda
 from ui.home import run_home
@@ -36,8 +36,12 @@ def main():
     st.sidebar.image("image/main_sidebar.png", use_container_width=True)  
     
     # 📅 현재 날짜 & 시간 표시
-    now = datetime.now().strftime("%Y-%m-%d %a %H:%M %p")
-    st.sidebar.markdown(f"🕒 **현재 시간:** {now}")
+    utc_now = datetime.now(timezone.utc)  # UTC 시간 가져오기
+    kst_now = utc_now + timedelta(hours=9)  # KST 시간으로 변환
+
+    # KST 시간 포맷에 맞게 출력
+    now_str = kst_now.strftime("%Y-%m-%d %a %H:%M %p")
+    st.sidebar.markdown(f"🕒 **현재 시간:** {now_str}")
 
     st.sidebar.markdown("---")
 
