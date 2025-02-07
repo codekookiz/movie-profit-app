@@ -317,7 +317,7 @@ def run_info():
     st.markdown(
         """
         <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
-            𝟚. 학습과 테스트 결과, LinearRegression 모델이 73%라는 가장 높은 예측 정확도를 보였고, 따라서 이를 최종 모델로 선택했습니다.</i>
+            𝟚. 학습과 테스트 결과, LinearRegression 모델이 가장 좋은 예측 성능을 보였고, 따라서 이를 최종 모델로 선택했습니다.</i>
         </p>
         """, 
     unsafe_allow_html=True
@@ -330,13 +330,13 @@ def run_info():
         from sklearn.metrics import r2_score
 
         r2_score(y_test, y_pred1)
-        # regressor1 정확도 : 73%
+        # regressor1 예측 성능 : 0.73
 
         r2_score(y_test, y_pred2)
-        # regressor2 정확도 : 66.39%
+        # regressor2 예측 성능 : 0.6639
 
         r2_score(y_test, y_pred3)
-        # regressor3 정확도 : 65.85%
+        # regressor3 예측 성능 : 0.6585
     """,
     unsafe_allow_html=True
 )
