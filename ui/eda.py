@@ -113,13 +113,13 @@ def run_eda():
 
     st.markdown("---")
 
-    # 상영관 수 vs 개봉 주 수익 관계
-    st.info("🏛 **상영관 수 vs 개봉 주 수익 관계 분석**")
+    # 상영관 수 vs 개봉 주말 수익 관계
+    st.info("🏛 **상영관 수 vs 개봉 주말 수익 관계 분석**")
     fig4 = plt.figure(figsize=(8, 6))
     sb.scatterplot(x=df["theaters"], y=df["opening_weekend"], alpha=0.5, color='purple')
     plt.xlabel("상영관 수")
-    plt.ylabel("개봉 주 수익 ($)")
-    plt.title("상영관 수와 개봉 주 수익 관계")
+    plt.ylabel("개봉 주말 수익 ($)")
+    plt.title("상영관 수와 개봉 주말 수익의 관계")
     st.pyplot(fig4)
 
     st.markdown("---")

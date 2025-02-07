@@ -58,7 +58,7 @@ def run_ml():
         genre = st.selectbox('🎭 장르', menu_genre)
 
     cost = st.number_input('💰 제작 비용 ($)', step=1000000, value=100000000)
-    opening = st.number_input('🎟 개봉 주 수익 ($)', step=1000000, value=100000000)
+    opening = st.number_input('🎟 개봉 주말 수익 ($)', step=1000000, value=100000000)
 
     classifier = joblib.load('model/classifier.pkl')
 
@@ -104,7 +104,7 @@ def run_ml():
 
                 save_df = pd.read_csv('data/result.csv')
                 new_row = pd.DataFrame([{"영화명":title, "개봉 연도":int(year), "상영 시간":int(runtime), "상영 등급":mpaa, "장르":genre,
-                                         "제작 비용 ($)":int(cost), "개봉 주 수익 ($)":int(opening), "유형":label_group, "북미 예상 수익 ($)":int(pred_dom_profit),
+                                         "제작 비용 ($)":int(cost), "개봉 주말 수익 ($)":int(opening), "유형":label_group, "북미 예상 수익 ($)":int(pred_dom_profit),
                                          "전세계 예상 수익 ($)":int(pred_wrld_profit)}])
                 print(new_row)
 
