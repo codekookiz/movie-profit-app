@@ -50,6 +50,7 @@ def run_eda():
     st.info("📌 **축적된 과거 데이터** (new_movie.csv)")
     df = pd.read_csv("data/new_movie.csv", index_col=0)
     df["Group"].replace([0, 1, 2], ["미들 마켓", "메가 블록버스터", "블록버스터"], inplace=True)
+    df["mpaa"].replace(['G', 'PG', 'PG-13', 'R'], ['전체 관람가', '12세 이상 관람가', '15세 이상 관람가', '청소년 관람 불가'], inplace=True)
     df["year"] = df["year"].astype(str)
     
     # 데이터프레임 출력
@@ -104,14 +105,14 @@ def run_eda():
     st.markdown("---")
 
     # MPAA 등급별 수익 비교
-    st.info("🎬 **MPAA 등급별 평균 전 세계 수익 비교**")
+    st.info("🎬 **상영 등급별 평균 전 세계 수익 비교**")
     df_mpaa = df.groupby("mpaa")["worldwide_gross"].mean().sort_values()
     fig3 = plt.figure()
     df_mpaa.plot(kind="bar", figsize=(8, 5), color="lightgreen")
     plt.ylabel("평균 수익 ($)")
-    plt.xlabel("MPAA 등급")
+    plt.xlabel("상영 등급")
     plt.xticks(rotation = 0)
-    plt.title("MPAA 등급별 평균 수익")
+    plt.title("상영 등급별 평균 수익")
     st.pyplot(fig3)
 
     st.markdown("---")
