@@ -70,20 +70,20 @@ def main():
     st.sidebar.markdown("📌 Created by **CodeKookiz**  \n[🌍 Website](https://codekookiz.imweb.me)")
 
     # 탭 메뉴 생성
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏠 홈", "📊 과거 데이터 확인하기", "🎬 영화 수익 예측하기", "ℹ 앱 정보", "⚒️ 통계 데이터"])
+    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏠 홈", "ℹ 앱 정보", "📊 과거 데이터 확인하기", "🎬 영화 수익 예측하기", "⚒️ 통계 데이터"])
 
     # 각 탭에 해당하는 기능 실행
     with tab1:
         run_home()
 
     with tab2:
-        run_eda()
+        run_info()
 
     with tab3:
-        run_ml()
+        run_eda()
 
     with tab4:
-        run_info()
+        run_ml()
 
     with tab5:
         run_stat()
