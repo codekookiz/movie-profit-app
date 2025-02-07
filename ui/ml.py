@@ -18,6 +18,10 @@ st.markdown(
 )
 
 def run_ml():
+
+    st.text('')
+    st.text('')
+
     # 제목 정리
     st.markdown(
         """

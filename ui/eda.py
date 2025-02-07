@@ -28,6 +28,9 @@ def run_eda():
     fontRegistered()
     plt.rc('font', family='NanumGothic')
 
+    st.text('')
+    st.text('')
+
     # 제목 정리
     st.markdown(
         """

@@ -1,6 +1,10 @@
 import streamlit as st
 
 def run_info():
+
+    st.text('')
+    st.text('')
+
     # 제목 스타일
     st.markdown(
         """

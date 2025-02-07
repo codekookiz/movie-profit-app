@@ -1,6 +1,10 @@
 import streamlit as st
 
 def run_home():
+
+    st.text('')
+    st.text('')
+
     # 제목 스타일 개선
     st.markdown(
         """

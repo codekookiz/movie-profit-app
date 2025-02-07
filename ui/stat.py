@@ -5,6 +5,10 @@ import seaborn as sb
 
 
 def run_stat() :
+
+    st.text('')
+    st.text('')
+
     st.markdown(
             """
             <h2 style="text-align: center; color: #FF4B4B;">
