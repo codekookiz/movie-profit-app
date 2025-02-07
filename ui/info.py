@@ -94,6 +94,24 @@ def run_info():
 
     st.markdown("---")
 
+    st.markdown(
+    """
+    <h3 style="font-size: 26px; color: #333; font-family: 'Arial', sans-serif;">
+        배포 과정
+    </h3><br>
+
+    <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
+        📤 앱은 Streamlit을 사용하여 웹 애플리케이션 형태로 배포되었습니다.<br>
+
+    <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
+        🖥️ 초기에는 로컬 환경에서 테스트 후, requirements.txt 파일을 생성하여 외부 환경에서도 실행 가능하도록 설정하였습니다.
+    </p>
+    """, 
+    unsafe_allow_html=True
+)
+
+    st.markdown("---")
+
     # 앱 개발 과정
     st.markdown(
         """
@@ -370,24 +388,6 @@ def run_info():
     unsafe_allow_html=True
 )
     
-    st.markdown("---")
-    
-    st.markdown(
-    """
-    <h3 style="font-size: 26px; color: #333; font-family: 'Arial', sans-serif;">
-        배포 과정
-    </h3><br>
-
-    <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
-        📤 앱은 Streamlit을 사용하여 웹 애플리케이션 형태로 배포되었습니다.<br>
-
-    <p style="font-size: 18px; line-height: 1.8; letter-spacing: 0.5px; color: #555;">
-        🖥️ 초기에는 로컬 환경에서 테스트 후, requirements.txt 파일을 생성하여 외부 환경에서도 실행 가능하도록 설정하였습니다.
-    </p>
-    """, 
-    unsafe_allow_html=True
-)
-
     st.markdown("---")
 
     st.header('')
