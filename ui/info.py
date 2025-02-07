@@ -326,7 +326,7 @@ def run_info():
     st.markdown(
         """
         ```bash
-        # 정확도 확인 및 모델 선택
+        # 예측 성능 확인 및 모델 선택
         from sklearn.metrics import r2_score
 
         r2_score(y_test, y_pred1)
