@@ -34,7 +34,7 @@ def run_home():
     st.markdown("### 📌 **사용 데이터**")
     st.info(
         """
-        - 🔹 **top-500-movies.csv** (출처: Kaggle)  
+        - 🔹 **[top-500-movies.csv](https://www.kaggle.com/datasets/mitchellharrison/top-500-movies-budget)** (출처: Kaggle)  
         - 🔹 **new_movie.csv** (일부 수정 및 추가 데이터 포함)  
         - 💡 영화의 제작비, 개봉 연도, 장르, 감독 등의 정보를 포함하며,  
           수익 예측을 위한 머신러닝 모델 학습에 활용됩니다.

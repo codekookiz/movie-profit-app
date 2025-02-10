@@ -26,9 +26,12 @@ def main():
         <h1 style='text-align: center; color: color: #4C82C2;'>
             🎬 영화 예상 수익 예측 앱
         </h1>
+        <h2 style='text-align: center; 'color: #4C82C2;'>
+            머신러닝 기반 예측
+        </h2>
         """, unsafe_allow_html=True
     )
-    
+
     st.markdown("""<hr style="border: none; height: 5px; background: #5B9BD5; box-shadow: 0px 2px 5px rgba(0,0,0,0.2);">""",
                  unsafe_allow_html=True)
     
@@ -45,15 +48,21 @@ def main():
 
     st.sidebar.markdown("---")
 
+    df = pd.read_csv('data/new_movie.csv')
+    count = len(df)
+    prod = int((df['production_cost'].mean() / 1000000).round())
+    prof = int((df['worldwide_gross'].mean() / 1000000).round())
+    best = df.sort_values('worldwide_gross', ascending=False).iloc[0, :]['title']
+
     # 🎬 영화 데이터 요약 (예시 데이터)
     st.sidebar.markdown("### 📊 데이터 요약")
     col1, col2 = st.sidebar.columns(2)
-    col1.metric("📈 총 영화 데이터", "491개")
-    col2.metric("💰 평균 제작비", "$149M")
+    col1.metric("📈 총 영화 데이터", f"{count}개")
+    col2.metric("💰 평균 제작비", f"${prod}M")
 
     col3, col4 = st.sidebar.columns(2)
-    col3.metric("🎟 평균 수익", "$478M")
-    col4.metric("⭐️ 최고 흥행작", "Avatar")
+    col3.metric("🎟 평균 수익", f"${prof}M")
+    col4.metric("⭐️ 최고 흥행작", f"{best}")
 
     st.sidebar.markdown("---")
 
