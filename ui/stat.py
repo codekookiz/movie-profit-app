@@ -34,6 +34,16 @@ def run_stat() :
     df = pd.read_csv('data/result.csv')
     df['개봉 연도'] = df['개봉 연도'].astype(str)
     st.dataframe(df.sort_index(ascending=False))
+
+    st.write("""
+    - 앱 사용자들이 수익 예측을 위해 입력한 정보를 별도의 데이터 테이블에 저장합니다.
+        - 앱을 통해 입력된 데이터의 분석 및 재가공 목적으로 사용될 수 있습니다.
+        - 하단의 차트를 참고하여 경향성 역시 확인이 가능합니다.
+    - 사용자들이 입력한 데이터와 머신 러닝 모델을 통해 도출된 예측 결과를 함께 저장합니다.
+        - 데이터를 인덱스 역순(descending)으로 정렬하여 최신 입력 데이터가 가장 위에 표시되도록 하였습니다.
+    """)
+
+
     st.subheader('')
 
     if not df.empty :
