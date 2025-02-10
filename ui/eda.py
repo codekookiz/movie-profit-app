@@ -31,7 +31,7 @@ def run_eda():
     st.text('')
     st.text('')
 
-    # 제목 정리
+    # 제목
     st.markdown(
         """
         <h2 style="text-align: center; color: #FF4B4B;">
@@ -47,11 +47,11 @@ def run_eda():
     st.markdown("---")
 
     # 데이터 불러오기
-    st.info("📌 **축적된 과거 데이터** (new_movie.csv)")
+    st.info("📌 **기본 데이터** (new_movie.csv) : 불필요 데이터 삭제 및 클러스터링 완료")
     df = pd.read_csv("data/new_movie.csv", index_col=0)
-    df["Group"].replace([0, 1, 2], ["미들 마켓", "메가 블록버스터", "블록버스터"], inplace=True)
-    df["mpaa"].replace(['G', 'PG', 'PG-13', 'R'], ['전체 관람가', '12세 이상 관람가', '15세 이상 관람가', '청소년 관람 불가'], inplace=True)
-    df["year"] = df["year"].astype(str)
+    df["영화 유형"].replace([0, 1, 2], ["미들 마켓", "메가 블록버스터", "블록버스터"], inplace=True)
+    df["상영 등급"].replace(['G', 'PG', 'PG-13', 'R'], ['전체 관람가', '12세 이상 관람가', '15세 이상 관람가', '청소년 관람 불가'], inplace=True)
+    df["개봉 연도"] = df["개봉 연도"].astype(str)
     
     # 데이터프레임 출력
     st.dataframe(df, use_container_width=True)
@@ -62,12 +62,23 @@ def run_eda():
     if st.button("📈 기본 통계 데이터 보기"):
         st.dataframe(df.describe())
 
+        st.info("""
+                * count : 전체 데이터 수
+                * mean : 평균값
+                * std : 표준편차
+                * min : 최솟값
+                * 25% : 최솟값으로부터 1/4 지점의 값
+                * 50% : 중앙값
+                * 75% : 최솟값으로부터 3/4 지점의 값
+                * max : 최댓값
+                """)
+
     st.markdown("---")
 
     # 최대/최소 데이터 확인
     st.info("📌 **최대/최소 데이터 확인하기**")
 
-    menu2 = ["production_cost", "domestic_gross", "worldwide_gross", "opening_weekend", "theaters", "runtime", "year"]
+    menu2 = ["제작 비용 ($)", "북미 박스오피스 수익 ($)", "전세계 박스오피스 수익 ($)", "개봉 주말 수익 ($)", "상영관 수", "상영 시간", "개봉 연도"]
     selected_column = st.selectbox("📌 비교할 컬럼 선택", menu2)
 
     # 최댓값 데이터
@@ -82,7 +93,7 @@ def run_eda():
 
     # 연도별 평균 수익 시각화
     st.info("📅 **연도별 평균 전 세계 수익 분석**")
-    df_yearly = df.groupby("year")["worldwide_gross"].mean()
+    df_yearly = df.groupby("개봉 연도")["전세계 박스오피스 수익 ($)"].mean()
     fig1 = plt.figure()
     df_yearly.plot(kind="bar", figsize=(10, 5), color="skyblue")
     plt.ylabel("평균 수익 ($)")
@@ -90,11 +101,15 @@ def run_eda():
     plt.title("연도별 평균 수익")
     st.pyplot(fig1)
 
+    st.write("""
+        
+    """)
+
     st.markdown("---")
 
     # 장르별 평균 수익 비교
     st.info("🎭 **장르별 평균 전 세계 수익 비교**")
-    df_genre = df.groupby("genre")["worldwide_gross"].mean().sort_values()
+    df_genre = df.groupby("장르")["전세계 박스오피스 수익 ($)"].mean().sort_values()
     fig2 = plt.figure()
     df_genre.plot(kind="barh", figsize=(10, 5), color="lightcoral")
     plt.xlabel("평균 수익 ($)")
@@ -106,7 +121,7 @@ def run_eda():
 
     # MPAA 등급별 수익 비교
     st.info("🎬 **상영 등급별 평균 전 세계 수익 비교**")
-    df_mpaa = df.groupby("mpaa")["worldwide_gross"].mean().sort_values()
+    df_mpaa = df.groupby("상영 등급")["전세계 박스오피스 수익 ($)"].mean().sort_values()
     fig3 = plt.figure()
     df_mpaa.plot(kind="bar", figsize=(8, 5), color="lightgreen")
     plt.ylabel("평균 수익 ($)")
@@ -120,7 +135,7 @@ def run_eda():
     # 상영관 수 vs 개봉 주말 수익 관계
     st.info("🏛 **상영관 수 vs 개봉 주말 수익 관계 분석**")
     fig4 = plt.figure(figsize=(8, 6))
-    sb.scatterplot(x=df["theaters"], y=df["opening_weekend"], alpha=0.5, color='purple')
+    sb.scatterplot(x=df["상영관 수"], y=df["개봉 주말 수익 ($)"], alpha=0.5, color='purple')
     plt.xlabel("상영관 수")
     plt.ylabel("개봉 주말 수익 ($)")
     plt.title("상영관 수와 개봉 주말 수익의 관계")

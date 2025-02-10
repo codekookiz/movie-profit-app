@@ -12,7 +12,7 @@ def run_stat() :
     st.markdown(
             """
             <h2 style="text-align: center; color: #FF4B4B;">
-                🛠️ 통계 데이터
+                💿 통계 데이터
             </h2>
             """, 
             unsafe_allow_html=True

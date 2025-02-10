@@ -1,4 +1,4 @@
-title,production_cost,domestic_gross,worldwide_gross,opening_weekend,mpaa,genre,theaters,runtime,year,Group
+제목,제작 비용 ($),북미 박스오피스 수익 ($),전세계 박스오피스 수익 ($),개봉 주말 수익 ($),상영 등급,장르,상영관 수,상영 시간,개봉 연도,영화 유형
 Avengers: Endgame,400000000,858373000.0,2797800564.0,357115007.0,PG-13,Action,4662.0,181.0,2019,1
 Pirates of the Caribbean: On Stranger Tides,379000000,241071802.0,1045713802.0,90151958.0,PG-13,Adventure,4164.0,136.0,2011,1
 Avengers: Age of Ultron,365000000,459005868.0,1395316979.0,191271109.0,PG-13,Action,4276.0,141.0,2015,1

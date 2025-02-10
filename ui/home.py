@@ -5,7 +5,7 @@ def run_home():
     st.text('')
     st.text('')
 
-    # 제목 스타일 개선
+    # 제목
     st.markdown(
         """
         <h2 style="text-align: center; color: #FF4B4B;">
@@ -17,7 +17,7 @@ def run_home():
 
     st.text('')
 
-    # 설명 부분 스타일 개선
+    # 설명
     st.markdown(
         """
         <p style="font-size: 18px; text-align: center;">
@@ -34,47 +34,35 @@ def run_home():
     st.markdown("### 📌 **사용 데이터**")
     st.info(
         """
-        - 🔹 **[top-500-movies.csv](https://www.kaggle.com/datasets/mitchellharrison/top-500-movies-budget)** (출처: Kaggle)  
-        - 🔹 **new_movie.csv** (일부 수정 및 추가 데이터 포함)  
-        - 💡 영화의 제작비, 개봉 연도, 장르, 감독 등의 정보를 포함하며,  
-          수익 예측을 위한 머신러닝 모델 학습에 활용됩니다.
+        🔹 **[top-500-movies.csv](https://www.kaggle.com/datasets/mitchellharrison/top-500-movies-budget)** (출처: Kaggle)  
+        * 1991년부터 2022년까지 개봉한 영화 중 전 세계 흥행 순위 1위부터 500위까지의 영화 데이터입니다.\n\n 
+        🔹 **new_movie.csv** (상단 데이터 일부 수정 및 추가 데이터 포함)\n\n
+        * **중복 데이터**('year(개봉 연도)'와 'released_date(개봉 일자)') 및 **불필요 데이터**('url' 등) 제거\n\n
+        * 비슷한 속성을 지닌 영화를 그룹(클러스터)화하여 해당 그룹 정보를 **새로운 컬럼**('영화 유형')에 추가
         """
     )
 
     st.markdown("---")
 
-    # 이미지 추가 (가운데 정렬)
+    # 이미지 추가
     st.image("image/main_home.png", use_container_width=True)
-
-    st.markdown("---")
-    
-    # 🎯 앱의 주요 기능 강조
-    st.markdown("### 🎯 **이 앱으로 할 수 있는 일**")
-    st.markdown(
-        """
-        - 📊 **과거 영화 데이터를 분석**하여 성공적인 영화의 특징을 탐색  
-        - 🔍 **입력한 영화 정보**를 바탕으로 **예상 수익을 예측**  
-        - 🎭 장르, 제작비, 감독, 개봉 연도 등의 요소가 **흥행에 미치는 영향 분석**  
-        - 📈 **AI 기반 예측 모델**을 사용하여 흥행 여부를 예측  
-        """
-    )
 
     st.markdown("---")
 
     # ⚡ 기능 소개
-    st.markdown("### ⚡ **이 앱의 주요 기능**")
+    st.markdown("### ⚡ **탭별 주요 기능**")
     st.markdown(
         """
-        - ✅ **과거 데이터 확인하기**: 기존 영화 데이터를 시각적으로 분석하고, 트렌드를 파악  
-        - ✅ **영화 수익 예측하기**: 입력한 영화 정보를 바탕으로 AI 모델이 예상 수익을 예측  
-        - ✅ **앱 정보**: 이 앱의 개요와 기능을 한눈에 확인  
-        - ✅ **통계 데이터**: 관리자 전용 페이지로 추가적인 분석 기능 제공  
+        - 📊 **과거 데이터 확인하기**: 기존 영화 데이터를 시각적으로 분석하고, 트렌드를 파악  
+        - 🔍 **앱 상세 정보**: 이 앱의 개요와 기능을 한눈에 확인
+        - 📈 **영화 수익 예측하기**: 입력한 영화 정보를 바탕으로 AI 모델이 예상 수익을 예측  
+        - ⚒️ **통계 데이터**: 관리자 전용 페이지로 추가적인 분석 기능 제공  
         """
     )
 
     st.markdown("---")
 
-    # 📢 활용 예시 추가
+    # 📢 활용 예시
     st.markdown("### 📢 **이렇게 활용할 수 있어요!**")
     st.markdown(
         """

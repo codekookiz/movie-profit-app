@@ -1,17 +1,8 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import platform
-import os
-import seaborn as sb
-from pandas.api.types import is_integer_dtype, is_float_dtype, is_object_dtype
-from sklearn.preprocessing import OneHotEncoder, LabelEncoder, StandardScaler
-from sklearn.compose import ColumnTransformer
-from sklearn.cluster import KMeans
-from matplotlib import rc
 from datetime import datetime, timedelta, timezone
 
+from ui.dev import run_dev
 from ui.eda import run_eda
 from ui.home import run_home
 from ui.info import run_info
@@ -20,14 +11,14 @@ from ui.stat import run_stat
 
 
 def main():
-    # 메인 타이틀 꾸미기
+    # 메인 타이틀
     st.markdown(
         """
         <h1 style='text-align: center; color: color: #4C82C2;'>
             🎬 영화 예상 수익 예측 앱
         </h1>
         <h2 style='text-align: center; 'color: #4C82C2;'>
-            머신러닝 기반 예측
+            🤖 머신러닝 기반
         </h2>
         """, unsafe_allow_html=True
     )
@@ -35,7 +26,7 @@ def main():
     st.markdown("""<hr style="border: none; height: 5px; background: #5B9BD5; box-shadow: 0px 2px 5px rgba(0,0,0,0.2);">""",
                  unsafe_allow_html=True)
     
-    # 사이드바 스타일 개선
+    # 사이드바
     st.sidebar.image("image/main_sidebar.png", use_container_width=True)  
     
     # 📅 현재 날짜 & 시간 표시
@@ -50,11 +41,11 @@ def main():
 
     df = pd.read_csv('data/new_movie.csv')
     count = len(df)
-    prod = int((df['production_cost'].mean() / 1000000).round())
-    prof = int((df['worldwide_gross'].mean() / 1000000).round())
-    best = df.sort_values('worldwide_gross', ascending=False).iloc[0, :]['title']
+    prod = int((df['제작 비용 ($)'].mean() / 1000000).round())
+    prof = int((df['전세계 박스오피스 수익 ($)'].mean() / 1000000).round())
+    best = df.sort_values('전세계 박스오피스 수익 ($)', ascending=False).iloc[0, :]['제목']
 
-    # 🎬 영화 데이터 요약 (예시 데이터)
+    # 🎬 영화 데이터 요약
     st.sidebar.markdown("### 📊 데이터 요약")
     col1, col2 = st.sidebar.columns(2)
     col1.metric("📈 총 영화 데이터", f"{count}개")
@@ -75,11 +66,8 @@ def main():
 
     st.sidebar.markdown("---")
 
-    # 📌 크레딧
-    st.sidebar.markdown("📌 Created by **CodeKookiz**  \n[🌍 Website](https://codekookiz.imweb.me)")
-
-    # 탭 메뉴 생성
-    tab1, tab2, tab3, tab4, tab5 = st.tabs(["🏠 홈", "ℹ 앱 정보", "📊 과거 데이터 확인하기", "🎬 영화 수익 예측하기", "⚒️ 통계 데이터"])
+    # 탭 메뉴
+    tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["🏠 홈", "ℹ 앱 상세 정보", "⚒️ 개발 정보", "📊 과거 데이터 확인하기", "🎬 영화 수익 예측하기", "💿 통계 데이터"])
 
     # 각 탭에 해당하는 기능 실행
     with tab1:
@@ -89,12 +77,15 @@ def main():
         run_info()
 
     with tab3:
-        run_eda()
+        run_dev()
 
     with tab4:
-        run_ml()
+        run_eda()
 
     with tab5:
+        run_ml()
+
+    with tab6:
         run_stat()
 
 if __name__ == '__main__':
