@@ -44,6 +44,13 @@ def run_ml():
     st.markdown('<p style="font-size: 16px; color: #555; font-family: Arial, sans-serif; background-color: #f0f0f0; padding: 15px; border-radius: 8px; box-shadow: 0px 2px 10px rgba(0,0,0,0.1);">영화의 기본 정보를 입력하면 예상 박스오피스 수익을 예측해드립니다.</p>', unsafe_allow_html=True)
     st.text('')
 
+    if st.button('❓ 수익 예측 예시') :
+        col1, col2 = st.columns(2)
+        with col1 :
+            st.image('image/result_a.png')
+        with col2 :
+            st.image('image/result_b.png')
+
     # 하위 제목
     st.markdown('<p style="font-size: 22px; font-weight: bold; color: #333; font-family: Arial, sans-serif; border-bottom: 3px solid #4CAF50; padding-bottom: 10px;">📌 영화 정보 입력</p>', unsafe_allow_html=True)
     st.text('')
