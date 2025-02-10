@@ -102,7 +102,7 @@ def run_eda():
     st.pyplot(fig1)
 
     st.write("""
-        
+
     """)
 
     st.markdown("---")
