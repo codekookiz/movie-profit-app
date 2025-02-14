@@ -1,6 +1,7 @@
 streamlit
 streamlit_option_menu
 streamlit_extras
+streamlit_lottie
 pandas
 matplotlib
 seaborn
