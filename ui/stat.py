@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
+import streamlit_option_menu as som
 
 
 def run_stat() :

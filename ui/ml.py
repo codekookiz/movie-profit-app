@@ -3,6 +3,7 @@ import joblib
 import numpy as np
 import pandas as pd
 import time
+import streamlit_option_menu as som
 
 # 스타일 적용
 st.markdown(
@@ -59,6 +60,7 @@ def run_ml():
     menu_genre = ['액션', '어드벤처', '블랙 코미디', '코미디', '드라마', '호러', '뮤지컬', '로맨틱 코미디', '스릴러/서스펜스', '서부극']
 
     title = st.text_input('🎥 영화 제목')
+    st.info('* 영화 제목은 데이터 축적 시 영화 간 구분을 위해 사용됩니다.')
     
     col1, col2 = st.columns(2)
     with col1:
@@ -117,7 +119,6 @@ def run_ml():
                 new_row = pd.DataFrame([{"영화명":title, "개봉 연도":int(year), "상영 시간":int(runtime), "상영 등급":mpaa, "장르":genre,
                                          "제작 비용 ($)":int(cost), "개봉 주말 수익 ($)":int(opening), "유형":label_group, "북미 예상 수익 ($)":int(pred_dom_profit),
                                          "전세계 예상 수익 ($)":int(pred_wrld_profit)}])
-                print(new_row)
 
                 save_df = pd.concat([save_df, new_row], ignore_index=True)
                 save_df.to_csv('data/result.csv', index=False)

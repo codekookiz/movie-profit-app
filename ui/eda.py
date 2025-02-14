@@ -6,6 +6,7 @@ import matplotlib.font_manager as fm
 import platform
 import os
 from matplotlib import rc
+import streamlit_option_menu as som
 
 @st.cache_data
 def fontRegistered():
