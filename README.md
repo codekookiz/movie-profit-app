@@ -1,4 +1,4 @@
-# 🎬 Movie Profit Prediction App
+# 🎬 영화 수익 예측 웹앱
 
 ### 영화의 수익을 예측하는 인공지능 웹 애플리케이션
 
